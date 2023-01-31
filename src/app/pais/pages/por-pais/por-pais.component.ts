@@ -19,13 +19,13 @@ export class PorPaisComponent {
     
    }
 
-  buscar() {
+  buscar(busqueda: string) {
+    this.busqueda = busqueda;
     this.isError = false;
-    this.paisService.buscarPais(this.busqueda)
+    this.paisService.buscarPais(busqueda)
       .subscribe({
         next: (paises) => {
           this.paises = paises;
-          console.log(paises);
         },
         error: (_) => {
           this.paises = [];
