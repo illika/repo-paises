@@ -14,6 +14,7 @@ import { PaisService } from '../../services/pais.service';
 export class VerPaisComponent implements OnInit {
 
   pais!: Pais;
+  isError: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,
     private paisService: PaisService) { }
@@ -22,9 +23,17 @@ export class VerPaisComponent implements OnInit {
     this.activatedRoute.params
       .pipe(
         switchMap(({ id }) => this.paisService.getPaisById(id)),
-        tap( console.log )
+        tap(console.log)
       )
-      .subscribe((pais) => this.pais = pais)
+      .subscribe({
+        next: (pais) => {
+          this.isError = false;
+          this.pais = pais;
+        },
+        error: (_) => {
+          this.isError = true;
+        }
+      })
     /*
         this.activatedRoute.params.subscribe(({ id }) => {
           this.paisService.getPaisById(id).subscribe((pais) => {

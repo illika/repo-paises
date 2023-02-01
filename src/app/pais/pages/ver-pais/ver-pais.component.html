@@ -1,5 +1,5 @@
-<div *ngIf="!pais; else divPais" class="alert alert-info">
-    Espere por favor
+<div *ngIf="!pais; else divPais" class="alert " [class]="isError?'alert-danger':'alert-info'">
+    {{ isError ? 'No se encontro País': 'Espere por favor'}}
 </div>
 
 <ng-template #divPais>
@@ -22,10 +22,10 @@
                     <strong>Población</strong> {{ pais.population | number }}
                 </li>
                 <li class="list-group-item">
-                    <strong>Código Numérico</strong> {{ pais.numericCode  }}
+                    <strong>Código Numérico</strong> {{ pais.numericCode }}
                 </li>
                 <li class="list-group-item">
-                    <strong>Código Alpha3</strong> {{ pais.alpha3Code  }}
+                    <strong>Código Alpha3</strong> {{ pais.alpha3Code }}
                 </li>
             </ul>
         </div>
@@ -47,7 +47,7 @@
             <span class="badge bg-primary me-1"> {{ pais.translations.hu }} </span>
         </div>
     </div>
-<!--
+    <!--
     <pre class="mt-5">
         {{ pais | json }}
     </pre>
