@@ -12,12 +12,11 @@ export class PorPaisComponent {
 
   busqueda: string = "";
   isError: boolean = false;
+  placeholder: string = "Buscar por País";
 
   paises: Pais[] = [];
 
-  constructor(private paisService: PaisService) {
-    
-   }
+  constructor(private paisService: PaisService) { }
 
   buscar(busqueda: string) {
     this.busqueda = busqueda;

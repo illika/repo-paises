@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { debounceTime, Subject } from 'rxjs';
 
 @Component({
@@ -16,6 +16,8 @@ export class PaisInputComponent implements OnInit {
   busqueda: string = "";
 
   debouncer: Subject<string> = new Subject();
+
+  @Input() placeholder: string = "Buscar";
 
   ngOnInit(): void {
     this.debouncer
