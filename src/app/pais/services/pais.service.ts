@@ -29,4 +29,10 @@ export class PaisService {
 
   }
 
+  getPaisById(id: String): Observable<Pais> {
+    const url = `${this.apiUrl}/alpha/${id}`;
+
+    return this.http.get<Pais>(url);
+  }
+
 }
